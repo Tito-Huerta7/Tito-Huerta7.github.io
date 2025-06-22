@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 24px;
+            color: #333;
+        }
+
+        label {
+            font-weight: 500;
+            color: #444;
+            display: block;
+            text-align: left;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #mensaje {
+            margin-top: 10px;
+            color: red;
+            font-weight: 500;
+        }
+    </style>
+
+    <script>
+        function login() {
+            const usuario = document.getElementById("usuario").value;
+            const clave = document.getElementById("clave").value;
+
+            google.script.run.withSuccessHandler(function (acceso) {
+                if (acceso) {
+                    window.top.location.href = "<?= ScriptApp.getService().getUrl() ?>?formulario=true";
+                } else {
+                    document.getElementById("mensaje").innerText = "Credenciales incorrectas.";
+                }
+            }).validarLogin(usuario, clave);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" placeholder="Escribe tu usuario">
+
+        <label for="clave">Contraseña</label>
+        <input type="password" id="clave" placeholder="Escribe tu contraseña">
+
+        <button onclick="login()">Ingresar</button>
+
+        <p id="mensaje"></p>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

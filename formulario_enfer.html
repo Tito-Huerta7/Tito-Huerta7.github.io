@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>CLINICA</title>
+
+    <!--<link rel="icon" type="image/x-icon" href="imagenes/icon.png" />-->
+
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alike&family=Audiowide&family=Bebas+Neue&family=Bowlby+One+SC&family=Erica+One&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Goudy+Bookletter+1911&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Jaro:opsz@6..72&family=Lilita+One&family=Limelight&family=Linden+Hill:ital@0;1&family=Metal&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Georgian:wght@100..900&family=Passion+One:wght@400;700;900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Mono+One&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/styles_index.css" />
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="card shadow" style="max-width: 800px; margin: 0 auto;">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Agregar Paciente</h5>
+            </div>
+            <div class="card-body">
+                <form id="miFormulario">
+                    <!-- TIPO - DOCUMENTO -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
+                            <select class="form-select" id="tipoDocumento" name="tipoDocumento" required>
+                                <option value="" disabled selected>Selecciona una especialidad</option>
+                                <option value="DNI">Documento Nacional de Identidad</option>
+                                <option value="CDE">Carnet de Extranjeria</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="numDocumento" class="form-label">DNI del Paciente</label>
+                            <input type="number" class="form-control" id="paciente" name="paciente">
+                        </div>
+                    </div><br>
+                    <!-- APELLIDOS - NOMBRES -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+                                    <input type="text" class="form-control" id="apPaterno" name="apPaterno">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+                                    <input type="text" class="form-control" id="apMaterno" name="apMaterno">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nombres" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="nombres" name="nombres">
+                        </div>
+                    </div><br>
+                    <!-- FECHA - EDAD - SEXO - PRIORIDAD -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" id="fech_nac" name="fech_nac" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="edad" class="form-label">Edad</label>
+                                    <input type="number" class="form-control" id="edad" name="edad" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6    ">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="sexo" class="form-label">Sexo</label>
+                                    <select class="form-select" id="sexo" name="sexo" required>
+                                        <option value="" disabled selected>Selecciona</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="prioridad" class="form-label">Prioridad</label>
+                                    <select class="form-select" id="prioridad" name="prioridad" required>
+                                        <option value="" disabled selected>Selecciona</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="Alta">Alta</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+                    <!-- HIST. CLINICA - FECHA MUESTRA -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="historiaClinica" class="form-label">Historia Clínica</label>
+                            <input type="text" class="form-control" id="hist_cli" name="hist_cli">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fechaMuestra" class="form-label">Fecha Toma de Muestra</label>
+                            <input type="datetime-local" class="form-control" id="fech_mue" name="fech_mue" required>
+                        </div>
+                    </div><br>
+                    <!-- TELEF- CORREO -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="telefono" class="form-label">Número de Teléfono</label>
+                            <input type="number" class="form-control" id="telef" name="telef">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="correo" name="correo">
+                        </div>
+                    </div><br>
+                    <!-- DIRECCION- COMENT -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" name="direccion">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="comentario" class="form-label">Comentario</label>
+                            <textarea class="form-control" id="comentario" rows="1" name="comentario"></textarea>
+                        </div>
+                    </div><br>
+                    <!-- APELLIDOS - NOMBRES -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="codigo" class="form-label">Código</label>
+                                    <input type="number" class="form-control" id="codigo" name="codigo">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cmp" class="form-label">C.M.P.</label>
+                                    <input type="text" class="form-control" id="cmp" name="cmp">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="medico" class="form-label">Nombre y Apellido del Médico</label>
+                            <input type="text" class="form-control" id="medico" name="medico">
+                        </div>
+                    </div>
+                    <!-- Botones -->
+                    <div class="row">
+                        <div class="text-end mt-4">
+                            <button class="btn btn-primary btn-xl w-100 btn-form" id="submitButton" type="submit">
+                                Enviar
+                            </button>
+                        </div>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <!--saber su edad al instante-->
+    <script>
+        document.getElementById('fech_nac').addEventListener('change', function () {
+            const fech_nac = new Date(this.value);
+            const hoy = new Date();
+            let edad = hoy.getFullYear() - fech_nac.getFullYear();
+            const mes = hoy.getMonth() - fech_nac.getMonth();
+
+            if (mes < 0 || (mes === 0 && hoy.getDate() < fech_nac.getDate())) {
+                edad--;
+            }
+
+            // Solo mostrar si la edad es válida
+            document.getElementById('edad').value = edad >= 0 ? edad : '';
+        });
+    </script>
+
+    <!--SCRIPT PARA EL FUNCIONAIMIENTO DEL FORMULARIO-->
+    <script>
+        document.getElementById("miFormulario").addEventListener("submit", function (e) {
+            e.preventDefault(); // Evita envío tradicional
+
+            const telef = this.telef.value;
+            if (telef.length !== 9 || isNaN(telef)) {
+                alert("El teléfono debe tener exactamente 9 dígitos numéricos.");
+                return;
+            }
+
+            const paciente = this.paciente.value;
+            if (paciente.length < 8 || paciente.length > 10 || isNaN(paciente)) {
+                alert("El documento del paciente debe tener entre 8 y 10 dígitos numéricos.");
+                return;
+            }
+
+            // Extrae los valores del formulario
+            const datos = {};
+            const formElements = this.elements;
+            for (let i = 0; i < formElements.length; i++) {
+                const el = formElements[i];
+                if (el.name) datos[el.name] = el.value;
+            }
+
+            // Enviar al servidor (Apps Script)
+            google.script.run
+                .withSuccessHandler(function () {
+                    alert("Datos enviados correctamente.");
+                    document.getElementById("miFormulario").reset();
+                })
+                .withFailureHandler(function (error) {
+                    alert("Error al enviar los datos: " + error.message);
+                })
+                .guardarFormulario(datos);
+        });
+    </script>
+
+
+</body>
+
+</html>
